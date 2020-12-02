@@ -84,7 +84,7 @@ def create_layout() -> None:
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage",
                                                              "Iniciar Sesion",
-                                                             "Mapa",
+                                                             "Mapa de Densidad",
                                                              "Aglomeracion",
                                                              "Mision",
                                                              "Contacto"])
@@ -116,7 +116,7 @@ def load_homepage() -> None:
     
     st.write("Evite las aglomera...")
     
-    st.write("Porq AglomerApp...")
+    st.write("Porque AglomerApp...")
     
     
     t = "<div>Hello there my <span class='highlight white'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"

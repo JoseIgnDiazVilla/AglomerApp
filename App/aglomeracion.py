@@ -44,6 +44,11 @@ def load_page():
 		st.image("red.jpg")
 		st.markdown("{} Tiene demasiada aglomeracion. Prefiera alternativas.".format(place))
         
+	st.write("Vas a ir?")
+	st.button("Si")
+    
+	st.slider("Aglomeracion")
+        
 	latitud, longitud = places_data[place]  
 	map_data = pd.DataFrame(
 		0*np.random.randn(1, 2) / [50, 50] + [latitud, longitud],
