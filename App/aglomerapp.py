@@ -10,10 +10,19 @@ import base64
 import login_signup
 import mapa
 import aglomeracion
+import datetime
 
 called = False
 
 app_state = "Home"
+
+dia =  {0:"Lunes",
+		1:"Martes",
+		2:"Miercoles",
+		3:"Jueves",
+		4:"Viernes",
+		5:"Sabado",
+		6:"Domingo"}
 
 def main():
     #page = st.sidebar.selectbox("Choose a page", ["Homepage", "Exploration"])
@@ -55,10 +64,10 @@ def create_layout() -> None:
     """
     global app_state
     
-    main_bg = "back_ground2 (2).jpg"
+    main_bg = "background_3.jpg"
     main_bg_ext = "jpg"
 
-    side_bg = "sidebar.jpg"
+    side_bg = "sidebar_3_1.jpg"
     side_bg_ext = "jpg"
 
     st.markdown(
@@ -81,6 +90,14 @@ def create_layout() -> None:
         
     
     st.markdown('<style>h1{color: black;}</style>', unsafe_allow_html=True)
+    
+    # Fecha
+    now = datetime.datetime.now()
+    d = datetime.datetime.today().weekday()
+    st.sidebar.title("{} {} | {}:{}".format(dia[d], now.day, now.hour, now.minute))
+    
+    
+    # Menu
     st.sidebar.title("Menu")
     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage",
                                                              "Iniciar Sesion",
@@ -99,9 +116,9 @@ def create_layout() -> None:
     elif app_mode == "Player Statistics":
         playerstats.load_page(df, player_list)
     elif app_mode == "Mision":
-        exploregames.load_page(df, player_list)
+        load_mission()
     elif app_mode == "Contacto":
-        headtohead.load_page(df, player_list)
+        load_contact()
     
     numb = np.random.randint(4)
     st.image("mountain_" + str(numb) + ".jpg",
@@ -124,11 +141,45 @@ def load_homepage() -> None:
     
     
     
-def reset_buttons():
+def load_mission() -> None:
     
-    login = False
-    signup = False
-    app_mode = "Portada"
+    st.title("Nuestra Mision")
+    
+    numb = np.random.randint(4)
+    st.image("mission_stock_" + str(numb) + ".jpg",
+             use_column_width=True)
+    
+    
+    st.markdown("Nos comprometemos a")
+    
+    st.write("Evite las aglomera...")
+    
+    st.write("Porque AglomerApp...")
+    
+    t = "<div>Hello there my <span class='highlight white'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+ 
+
+
+feedback_backup = pd.DataFrame({"feedback":[]}) 
+    
+def load_contact() -> None:
+    
+    st.title("Contacto")
+    st.markdown("Tiene preguntas o sugerencias? ")
+    st.markdown("Escribanos!")
+    
+    feed_back = st.text_area("","")
+    
+    if st.button("Enviar"):
+        feedback_backup.append({"feedback":feed_back}, ignore_index=True)
+        st.success("Gracias por sus comentarios.")
+        
+    
+    
+    st.markdown("Mail: aglomerapp@contact.cl")
+    st.markdown("Telefono: 555-666-8")
+    
+    st.title("Nuestro Equipo")
     
     
 if __name__ == "__main__":
