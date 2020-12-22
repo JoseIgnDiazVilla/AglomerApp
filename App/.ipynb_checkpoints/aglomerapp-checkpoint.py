@@ -127,7 +127,7 @@ def create_layout() -> None:
 def load_homepage() -> None:
     #st.markdown('<style>h1{color: white;}</style>', unsafe_allow_html=True)
     #st.title("AglomerAPP")
-    st.image("logo.png",
+    st.image("LOGO2.png",
              use_column_width=True)
     st.markdown("XX__Bienvenide__XX")
     
