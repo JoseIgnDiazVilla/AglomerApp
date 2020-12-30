@@ -74,10 +74,7 @@ def create_layout() -> None:
         f"""
         <style>
         .reportview-container {{
-            background: url(data:images/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-        }}
-       .sidebar .sidebar-content {{
-            background: url(data:images/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+            background-color:#311A95 
         }}
         </style>
         """,
@@ -103,7 +100,7 @@ def create_layout() -> None:
                                                              "Iniciar Sesion",
                                                              "Mapa de Densidad",
                                                              "Aglomeracion",
-                                                             "Mision",
+                                                             "Nosotros",
                                                              "Contacto"])
     if app_mode == 'Homepage':
         load_homepage()
@@ -115,58 +112,113 @@ def create_layout() -> None:
         aglomeracion.load_page()
     elif app_mode == "Player Statistics":
         playerstats.load_page(df, player_list)
-    elif app_mode == "Mision":
+    elif app_mode == "Nosotros":
         load_mission()
     elif app_mode == "Contacto":
         load_contact()
     
     numb = np.random.randint(4)
-    st.image("mountain_" + str(numb) + ".jpg",
-             use_column_width=True)
+    #st.image("mountain_" + str(numb) + ".jpg",
+    #         use_column_width=True)
 
 def load_homepage() -> None:
     #st.markdown('<style>h1{color: white;}</style>', unsafe_allow_html=True)
     #st.title("AglomerAPP")
     st.image("LOGO2.png",
              use_column_width=True)
-    st.markdown("XX__Bienvenide__XX")
-    
-    st.write("Evite las aglomera...")
-    
-    st.write("Porque AglomerApp...")
-    
-    
-    t = "<div>Hello there my <span class='highlight white'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+    st.markdown(
+    """
+    <h1 style=color:white> Bienvenido a Aglomerapp </h1>
+    <ol style=color:white>
+    <li>Ingresa a tu portal</li>
+    <li>Busca tu destino</li>
+    <li>Nosotros te decimos su estado de aglomeración</li>
+    <li>Prepara tu mascarilla y alchol gel y comienza tu aventura!</li>
+    </ol> 
+        
+    """, unsafe_allow_html=True)
+
+
 
     
     
     
 def load_mission() -> None:
+    st.markdown(
+        f"""
+        <style>
+        .reportview-container {{
+            background-color:#FFFFFF
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    #st.title("Nuestro Equipo")
+    st.markdown(
+    """
+    <h1 style=color:#311A95> 
+    Misión
+    </h1>
+    <p style=font-size:20px;> 
+    <i><b style=text-align: justify;>"Somos un equipo de estudiantes jóvenes, ávidos de nuevos desafíos, decididos a mejorar la calidad de vida de nuestro entorno, con tecnología y entusiasmo" 
+    </b></i>
+    </p>
+    <p>
+    El conocimiento y aprendizaje que nos entrega la sociedad debe ser devuelto a través de soluciones tecnológicas que permitan mejorar la calidad de vida de la comunidad.
+    </p>
+    <h1 style=color:#311A95> 
+    Nuestro Equipo
+    </h1>
+    <p>
+    Somos un grupo de cinco estudiantes de ingeniería eléctrica, cuyos conocimientos abarcan desde sistemas de potencia a inteligencia artificial.  
+    </p> 
+    """,
+    unsafe_allow_html=True)
+    st.image("fb.png", width=200)
+    st.write("Francisco Barrera")
+    st.image("ab.png", width=200)
+    st.write("Álvaro Becerra")
+    st.image("jd.png", width=200)
+    st.write("José Díaz")
+    st.image("ao.png", width=200)
+    st.write("Adolfo Obligado")
+    st.image("bp.png", width=200)
+    st.write("Bruno Perez")
     
-    st.title("Nuestra Mision")
-    
-    numb = np.random.randint(4)
-    st.image("mission_stock_" + str(numb) + ".jpg",
-             use_column_width=True)
-    
-    
-    st.markdown("Nos comprometemos a")
-    
-    st.write("Evite las aglomera...")
-    
-    st.write("Porque AglomerApp...")
-    
-    t = "<div>Hello there my <span class='highlight white'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+    #numb = np.random.randint(4)
+    #st.image("mission_stock_" + str(numb) + ".jpg",
+    #         use_column_width=True)
+    #st.markdown("Nos comprometemos a")
+    #st.write("Evite las aglomera...")
+    #st.write("Porque AglomerApp...")
+    #t = "<p style='color:white'>This is a paragraph.</p>"
+    #st.markdown(t, unsafe_allow_html=True)
+
  
 
 
 feedback_backup = pd.DataFrame({"feedback":[]}) 
     
 def load_contact() -> None:
-    
-    st.title("Contacto")
-    st.markdown("Tiene preguntas o sugerencias? ")
-    st.markdown("Escribanos!")
+    st.markdown(
+        f"""
+        <style>
+        .reportview-container {{
+            background-color:#FFFFFF
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(
+    """
+    <h1 style=color:#311A95> 
+    Contacto
+    </h1>
+    """, unsafe_allow_html=True)
+    st.markdown("¿Tienes preguntas o sugerencias? ")
+    st.markdown("Escríbenos!")
     
     feed_back = st.text_area("","")
     
@@ -176,10 +228,10 @@ def load_contact() -> None:
         
     
     
-    st.markdown("Mail: aglomerapp@contact.cl")
-    st.markdown("Telefono: 555-666-8")
+    st.markdown("Mail: contacto@aglomerapp.cl")
+    st.markdown("Telefono: +56 22 786 5806")
     
-    st.title("Nuestro Equipo")
+
     
     
 if __name__ == "__main__":

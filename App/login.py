@@ -55,10 +55,10 @@ def load_page():
 	#choice = st.sidebar.selectbox("Menu",menu)
 
 	state = 'login'
-	st.subheader("Login Section")
+	st.subheader("Ingresa a tu portal personal")
 
-	username = st.sidebar.text_input("User Name")
-	password = st.sidebar.text_input("Password",type='password')
+	username = st.sidebar.text_input("Usuario")
+	password = st.sidebar.text_input("Contraseña",type='password')
 	if st.sidebar.button("Aceptar"):
 		# if password == '12345':
 		create_usertable()
