@@ -40,8 +40,23 @@ places_trends = {"FCFM": np.random.randint(200, size=7*24),
                 "Facultad de Medicina": np.random.randint(400, size=7*24)}
 
 def load_page():
-    st.markdown('<style type="text/css"> p {color:white;} </style>', unsafe_allow_html=True)
-    st.title("Aglomeracion de tu destino")
+    st.markdown(
+        f"""
+        <style>
+        .reportview-container {{
+            background-color:#FFFFFF
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(
+    """
+    <h1 style=color:#311A95> 
+    Aglomeración 
+    </h1>
+    """,
+    unsafe_allow_html=True)
     now = datetime.datetime.now()
     d = datetime.datetime.today().weekday()
     #st.markdown("{} {} | {}:{}".format(dia[d], now.day, now.hour, now.minute))
@@ -52,7 +67,7 @@ def load_page():
     n_people = places_trends[place][d*now.hour]
     index = n_people/places_sizes[place]
     tex = st.empty()
-    tex.markdown("La aglomeracion en {} tiene un indice de {}.".format(place, index))
+    tex.markdown("La aglomeracion en {} tiene un indice de {}./1.00".format(place, index))
     
     prog = st.empty()
     #prog.progress(min(index, 1.0))
