@@ -65,9 +65,9 @@ def load_page():
 
 
     n_people = places_trends[place][d*now.hour]
-    index = n_people/places_sizes[place]
+    index = n_people*3.1415/places_sizes[place]
     tex = st.empty()
-    tex.markdown("La aglomeracion en {} tiene un indice de {}./1.00".format(place, index))
+    tex.markdown("La aglomeracion en {0} es de {1:.2f} personas en un radio de 1 m".format(place, index))
     
     prog = st.empty()
     #prog.progress(min(index, 1.0))
@@ -79,16 +79,16 @@ def load_page():
     ax.patch.set_alpha(0.1)
     #ax.get_xaxis().set_visible(False)
     #ax.get_yaxis().set_visible(False)
-    ax.set_xlim(0, 1.0)
+    ax.set_xlim(0, 2)
     
     
     
-    if index < 0.3:
+    if index < 0.5:
         #st.image("green.jpg")
         st.success("{} no esta aglomerado! No hay problema en ir.".format(place))
         ax.barh(0, index, align='center', color='green')
         #st.balloons()
-    elif index < 0.7:
+    elif index < 1:
         #st.image("yellow.jpg")
         st.success("{} Tiene mediana aglomeracion. Tome precauciones.".format(place))
         ax.barh(0, index, align='center', color='yellow')
